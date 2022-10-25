@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/cursos-backend.iml" filepath="$PROJECT_DIR$/.idea/cursos-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" filepath="$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" />
+    </modules>
+  </component>
+</project>
