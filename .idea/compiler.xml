@@ -7,17 +7,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microservicio-eureka" />
+        <module name="microservicio-gateway" />
         <module name="microservicio-usuarios" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="microservicio-eureka" target="18" />
+      <module name="microservicio-gateway" target="18" />
       <module name="microservicio-usuarios" target="18" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="microservicio-eureka" options="-parameters" />
+      <module name="microservicio-gateway" options="-parameters" />
       <module name="microservicio-usuarios" options="-parameters" />
     </option>
   </component>
