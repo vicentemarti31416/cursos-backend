@@ -13,7 +13,6 @@ import vicente.marti.microserviciousuarios.service.AlumnoService;
 import java.util.Optional;
 
 @RestController
-
 public class AlumnoController {
 
     @Autowired

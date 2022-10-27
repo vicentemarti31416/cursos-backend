@@ -12,9 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="microservicio-eureka" target="18" />
-      <module name="microservicio-gateway" target="18" />
-      <module name="microservicio-usuarios" target="18" />
+      <module name="microservicio-eureka" target="19" />
+      <module name="microservicio-gateway" target="19" />
+      <module name="microservicio-usuarios" target="19" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
