@@ -1,7 +1,5 @@
 package vicente.marti.microserviciousuarios.controller;
 
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -18,6 +16,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@Validated @RequestBody Alumno alumno, BindingResult result, @PathVariable Long id) {
+        if (result.hasErrors()) return this.validate(result);
         Optional<Alumno> optional = service.findById(id);
         Alumno alumnoDb = null;
         if (optional.isEmpty()) {
