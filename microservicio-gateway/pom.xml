@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.1</version>
+		<version>2.7.5</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>vicente.marti</groupId>
@@ -14,8 +14,8 @@
 	<name>microservicio-gateway</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
-		<spring-cloud.version>2021.0.3</spring-cloud.version>
+		<java.version>19</java.version>
+		<spring-cloud.version>2021.0.4</spring-cloud.version>
 	</properties>
 	<dependencies>
 		<dependency>

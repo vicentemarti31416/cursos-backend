@@ -13,7 +13,7 @@ import vicente.marti.microserviciousuarios.service.AlumnoService;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/alumnos")
+
 public class AlumnoController {
 
     @Autowired
