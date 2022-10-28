@@ -6,9 +6,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import vicente.marti.microserviciocommons.controller.CommonController;
-import vicente.marti.microserviciousuarios.entity.Alumno;
+import vicente.marti.microserviciocommons.entity.Alumno;
 import vicente.marti.microserviciousuarios.service.AlumnoService;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -28,6 +29,11 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
         alumnoDb.setApellido(alumno.getApellido());
         alumnoDb.setEmail(alumno.getEmail());
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(alumnoDb));
+    }
+
+    @GetMapping("/buscar/{str}")
+    public ResponseEntity<?> findByNombreOrApellido(@PathVariable String str) {
+        return  ResponseEntity.ok(service.findByNombreOrApellido(str));
     }
 
 }

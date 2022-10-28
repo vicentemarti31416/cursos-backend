@@ -1,4 +1,4 @@
-package vicente.marti.microserviciousuarios.entity;
+package vicente.marti.microserviciocommons.entity;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -65,5 +65,16 @@ public class Alumno implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if(this == object) {
+            return true;
+        }
+        if(!(object instanceof Alumno alumno)) {
+            return false;
+        }
+        return this.id != null && this.id.equals(alumno.getId());
     }
 }
