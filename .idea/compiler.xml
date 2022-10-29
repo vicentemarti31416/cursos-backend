@@ -10,6 +10,7 @@
         <module name="microservicio-cursos" />
         <module name="microservicio-gateway" />
         <module name="microservicio-commons" />
+        <module name="microservicio-examenes" />
         <module name="microservicio-usuarios" />
       </profile>
     </annotationProcessing>
@@ -17,6 +18,7 @@
       <module name="microservicio-commons" target="19" />
       <module name="microservicio-cursos" target="19" />
       <module name="microservicio-eureka" target="19" />
+      <module name="microservicio-examenes" target="19" />
       <module name="microservicio-gateway" target="19" />
       <module name="microservicio-usuarios" target="19" />
     </bytecodeTargetLevel>
@@ -26,6 +28,7 @@
       <module name="microservicio-commons" options="-parameters" />
       <module name="microservicio-cursos" options="-parameters" />
       <module name="microservicio-eureka" options="-parameters" />
+      <module name="microservicio-examenes" options="-parameters" />
       <module name="microservicio-gateway" options="-parameters" />
       <module name="microservicio-usuarios" options="-parameters" />
     </option>

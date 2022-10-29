@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservicio-commons/microservicio-commons.iml" filepath="$PROJECT_DIR$/microservicio-commons/microservicio-commons.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-cursos/microservicio-cursos.iml" filepath="$PROJECT_DIR$/microservicio-cursos/microservicio-cursos.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-eureka/microservicio-eureka.iml" filepath="$PROJECT_DIR$/microservicio-eureka/microservicio-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservicio-examenes/microservicio-examenes.iml" filepath="$PROJECT_DIR$/microservicio-examenes/microservicio-examenes.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-gateway/microservicio-gateway.iml" filepath="$PROJECT_DIR$/microservicio-gateway/microservicio-gateway.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" filepath="$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" />
     </modules>

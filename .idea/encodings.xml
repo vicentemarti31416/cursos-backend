@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/microservicio-cursos/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-eureka/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-eureka/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-examenes/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/microservicio-examenes/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-gateway/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/microservicio-usuarios/src/main/java" charset="UTF-8" />
