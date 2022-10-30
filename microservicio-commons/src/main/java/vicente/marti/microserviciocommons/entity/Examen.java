@@ -14,17 +14,24 @@ import java.util.List;
 public class Examen implements Serializable {
 
     @Serial
-    private static final long serialVersionUID = -976675683840714277L;
+    private static final long serialVersionUID = 7985130518900732114L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+
     @JsonIgnoreProperties(value = {"examen"}, allowSetters = true)
     @OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
-    List<Pregunta> preguntas;
+    private List<Pregunta> preguntas;
+
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Asignatura asignatura;
 
     public Examen() {
         this.preguntas = new ArrayList<>();
@@ -87,5 +94,13 @@ public class Examen implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public Asignatura getAsignatura() {
+        return asignatura;
+    }
+
+    public void setAsignatura(Asignatura asignatura) {
+        this.asignatura = asignatura;
     }
 }

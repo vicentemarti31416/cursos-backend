@@ -19,11 +19,15 @@ public class Curso implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date created;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Alumno> alumnos;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Examen> examenes;
 
