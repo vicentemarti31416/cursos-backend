@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import vicente.marti.microserviciocommons.controller.CommonController;
 import vicente.marti.microserviciocommons.entity.Alumno;
+import vicente.marti.microserviciocommons.entity.Examen;
 import vicente.marti.microserviciocursos.entity.Curso;
 import vicente.marti.microserviciocursos.service.CursoService;
 
@@ -43,6 +44,26 @@ public class CursoController extends CommonController<Curso, CursoService> {
         if (optional.isEmpty()) return ResponseEntity.notFound().build();
         Curso cursoDb = optional.get();
         cursoDb.remove(alumno);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDb));
+    }
+
+    @PutMapping("/{idCurso}/add-examenes")
+    public ResponseEntity<?> addExamenes(@Validated @RequestBody List<Examen> examenes, BindingResult result, @PathVariable Long idCurso) {
+        if (result.hasErrors()) return this.validate(result);
+        Optional<Curso> optional = service.findById(idCurso);
+        if (optional.isEmpty()) return ResponseEntity.notFound().build();
+        Curso cursoDb = optional.get();
+        examenes.forEach(cursoDb::add);
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDb));
+    }
+
+    @PutMapping("/{idCurso}/remove-examen")
+    public ResponseEntity<?> removeExamen(@RequestBody Examen examen, BindingResult result, @PathVariable Long idCurso) {
+        if (result.hasErrors()) return this.validate(result);
+        Optional<Curso> optional = service.findById(idCurso);
+        if (optional.isEmpty()) return ResponseEntity.notFound().build();
+        Curso cursoDb = optional.get();
+        cursoDb.remove(examen);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDb));
     }
 

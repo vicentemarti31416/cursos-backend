@@ -1,4 +1,4 @@
-package vicente.marti.microservicioexamenes.entity;
+package vicente.marti.microserviciocommons.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -48,6 +48,17 @@ public class Examen implements Serializable {
     public void remove(Pregunta pregunta) {
         this.preguntas.remove(pregunta);
         pregunta.setExamen(null);
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if(this == object) {
+            return true;
+        }
+        if(!(object instanceof Examen examen)) {
+            return false;
+        }
+        return this.id != null && this.id.equals(examen.getId());
     }
 
     public List<Pregunta> getPreguntas() {

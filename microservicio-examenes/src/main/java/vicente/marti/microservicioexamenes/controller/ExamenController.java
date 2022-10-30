@@ -4,12 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import vicente.marti.microserviciocommons.controller.CommonController;
-import vicente.marti.microservicioexamenes.entity.Examen;
+import vicente.marti.microserviciocommons.entity.Examen;
 import vicente.marti.microservicioexamenes.service.ExamenService;
 import java.util.Optional;
 
@@ -30,5 +27,10 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
                 .forEach(examenDb::remove);
         examenDb.setPreguntas(examen.getPreguntas());
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(examenDb));
+    }
+
+    @GetMapping("/buscar-examen/{str}")
+    public ResponseEntity<?> buscarExamen(@PathVariable String str) {
+        return ResponseEntity.ok(service.findExamenByName(str));
     }
 }

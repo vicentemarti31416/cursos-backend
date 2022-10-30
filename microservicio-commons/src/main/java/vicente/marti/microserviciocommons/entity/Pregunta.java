@@ -1,4 +1,4 @@
-package vicente.marti.microservicioexamenes.entity;
+package vicente.marti.microserviciocommons.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

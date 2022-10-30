@@ -1,6 +1,7 @@
 package vicente.marti.microserviciocursos.entity;
 
 import vicente.marti.microserviciocommons.entity.Alumno;
+import vicente.marti.microserviciocommons.entity.Examen;
 
 import javax.persistence.*;
 import java.io.Serial;
@@ -23,17 +24,12 @@ public class Curso implements Serializable {
     private Date created;
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Alumno> alumnos;
+    @ManyToMany(fetch = FetchType.LAZY)
+    private List<Examen> examenes;
 
     public Curso() {
         this.alumnos = new ArrayList<>();
-    }
-
-    public List<Alumno> getAlumnos() {
-        return alumnos;
-    }
-
-    public void setAlumnos(List<Alumno> alumnos) {
-        this.alumnos = alumnos;
+        this.examenes = new ArrayList<>();
     }
 
     public void add(Alumno alumno) {
@@ -42,6 +38,14 @@ public class Curso implements Serializable {
 
     public void remove(Alumno alumno) {
         this.alumnos.remove(alumno);
+    }
+
+    public void add(Examen examen) {
+        this.examenes.add(examen);
+    }
+
+    public void remove(Examen examen) {
+        this.examenes.remove(examen);
     }
 
     @PrePersist
@@ -71,5 +75,21 @@ public class Curso implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    public List<Examen> getExamenes() {
+        return examenes;
+    }
+
+    public void setExamenes(List<Examen> examenes) {
+        this.examenes = examenes;
     }
 }
