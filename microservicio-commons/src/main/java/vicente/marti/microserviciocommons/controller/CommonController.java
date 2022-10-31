@@ -2,6 +2,7 @@ package vicente.marti.microserviciocommons.controller;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,11 @@ public class CommonController<T, S extends CommonService<T>> {
     @GetMapping("/")
     public ResponseEntity<?> findAll() {
         return ResponseEntity.ok(service.findAll());
+    }
+
+    @GetMapping("/pageable")
+    public ResponseEntity<?> findAll(Pageable pageable) {
+        return ResponseEntity.ok(service.findAll(pageable));
     }
 
     @GetMapping("/{id}")
