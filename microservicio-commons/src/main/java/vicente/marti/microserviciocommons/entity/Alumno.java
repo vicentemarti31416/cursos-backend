@@ -1,8 +1,11 @@
 package vicente.marti.microserviciocommons.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 
 @Entity
@@ -23,10 +26,18 @@ public class Alumno implements Serializable {
     @Column(unique = true)
     private String email;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date created;
 
+    @Lob
+    @JsonIgnore
+    private byte[] photo;
+
+    public Integer getPhotoHashCode() {
+        return (this.photo != null)? Arrays.hashCode(this.photo) : null;
+    }
+
     @PrePersist
-    @Temporal(TemporalType.TIMESTAMP)
     private void prePersist() {
         this.created = new Date();
     }
@@ -69,6 +80,14 @@ public class Alumno implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
+    }
+
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
     }
 
     @Override
