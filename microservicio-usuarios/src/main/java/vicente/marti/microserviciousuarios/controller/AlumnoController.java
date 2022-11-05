@@ -20,6 +20,11 @@ import java.util.Optional;
 @RestController
 public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
+    @GetMapping("/alumnos-por-curso")
+    public ResponseEntity<?> findAllById(@RequestParam List<Long> alumnosId) {
+        return ResponseEntity.ok(service.findAllById(alumnosId));
+    }
+
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@Validated @RequestBody Alumno alumno, BindingResult result, @PathVariable Long id) {
         if (result.hasErrors()) return this.validate(result);
@@ -66,6 +71,13 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
         if (optional.isEmpty() || optional.get().getPhoto() == null) return ResponseEntity.notFound().build();
         Resource resource = new ByteArrayResource(optional.get().getPhoto());
         return ResponseEntity.ok().contentType(MediaType.MULTIPART_FORM_DATA).body(resource);
+    }
+
+
+    @DeleteMapping("/delete-cursos-alumnos/{alumnoId}")
+    public ResponseEntity<?> deleteCursoAlumnoByAlumnoId(@PathVariable Long alumnoId) {
+        service.deleteCursoAlumnoByAlumnoId(alumnoId);
+        return ResponseEntity.noContent().build();
     }
 
 }

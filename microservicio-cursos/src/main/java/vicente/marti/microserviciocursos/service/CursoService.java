@@ -9,4 +9,10 @@ import java.util.List;
 public interface CursoService extends CommonService<Curso> {
 
     Curso findByAlumnoId(Long id);
+
+    List<Long> findIdExamenConRespuestaByAlumnoId(Long alumnoId);
+
+    List<Alumno> findAllAlumnosById(List<Long> alumnosId);
+
+    void deleteCursoAlumnoByAlumnoId(Long alumnoId);
 }

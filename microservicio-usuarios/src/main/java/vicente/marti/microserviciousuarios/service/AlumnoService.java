@@ -7,5 +7,9 @@ import java.util.List;
 
 public interface AlumnoService extends CommonService<Alumno> {
 
-    public List<Alumno> findByNombreOrApellido(String str);
+    List<Alumno> findByNombreOrApellido(String str);
+
+    List<Alumno> findAllById(List<Long> alumnosId);
+
+    void deleteCursoAlumnoByAlumnoId(Long alumnoId);
 }

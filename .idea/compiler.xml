@@ -6,12 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="microservicio-eureka" />
         <module name="microservicio-cursos" />
+        <module name="microservicio-eureka" />
         <module name="microservicio-gateway" />
         <module name="microservicio-commons" />
         <module name="microservicio-examenes" />
         <module name="microservicio-usuarios" />
+        <module name="microservicio-respuestas" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
       <module name="microservicio-eureka" target="19" />
       <module name="microservicio-examenes" target="19" />
       <module name="microservicio-gateway" target="19" />
+      <module name="microservicio-respuestas" target="19" />
       <module name="microservicio-usuarios" target="19" />
     </bytecodeTargetLevel>
   </component>
@@ -30,6 +32,7 @@
       <module name="microservicio-eureka" options="-parameters" />
       <module name="microservicio-examenes" options="-parameters" />
       <module name="microservicio-gateway" options="-parameters" />
+      <module name="microservicio-respuestas" options="-parameters" />
       <module name="microservicio-usuarios" options="-parameters" />
     </option>
   </component>

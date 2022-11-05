@@ -30,8 +30,11 @@ public class Examen implements Serializable {
     private List<Pregunta> preguntas;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Asignatura asignatura;
+
+    @Transient
+    private boolean isAnswered;
 
     public Examen() {
         this.preguntas = new ArrayList<>();
@@ -102,5 +105,13 @@ public class Examen implements Serializable {
 
     public void setAsignatura(Asignatura asignatura) {
         this.asignatura = asignatura;
+    }
+
+    public boolean isAnswered() {
+        return isAnswered;
+    }
+
+    public void setAnswered(boolean answered) {
+        isAnswered = answered;
     }
 }

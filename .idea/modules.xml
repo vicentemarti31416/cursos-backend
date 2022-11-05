@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/microservicio-eureka/microservicio-eureka.iml" filepath="$PROJECT_DIR$/microservicio-eureka/microservicio-eureka.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-examenes/microservicio-examenes.iml" filepath="$PROJECT_DIR$/microservicio-examenes/microservicio-examenes.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-gateway/microservicio-gateway.iml" filepath="$PROJECT_DIR$/microservicio-gateway/microservicio-gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microservicio-respuestas/microservicio-respuestas.iml" filepath="$PROJECT_DIR$/microservicio-respuestas/microservicio-respuestas.iml" />
       <module fileurl="file://$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" filepath="$PROJECT_DIR$/microservicio-usuarios/microservicio-usuarios.iml" />
     </modules>
   </component>

@@ -38,6 +38,11 @@ public class CommonServiceImpl<T, R extends JpaRepository<T, Long>> implements C
     }
 
     @Override
+    public List<T> saveAll(List<T> types) {
+        return repository.saveAll(types);
+    }
+
+    @Override
     public void deleteById(Long id) {
         repository.deleteById(id);
     }

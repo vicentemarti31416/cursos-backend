@@ -19,7 +19,7 @@ public class Pregunta implements Serializable {
 
     private String text;
 
-    @JsonIgnoreProperties(value = {"preguntas"})
+    @JsonIgnoreProperties(value = {"preguntas", "hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "examen_id")
     private Examen examen;

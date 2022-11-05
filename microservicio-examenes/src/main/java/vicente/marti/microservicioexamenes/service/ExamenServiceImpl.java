@@ -12,6 +12,7 @@ import vicente.marti.microservicioexamenes.repository.ExamenRepository;
 import java.util.List;
 
 @Service
+@Transactional
 public class ExamenServiceImpl extends CommonServiceImpl<Examen, ExamenRepository> implements ExamenService {
 
     @Autowired
