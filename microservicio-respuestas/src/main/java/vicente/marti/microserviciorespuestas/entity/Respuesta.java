@@ -19,12 +19,12 @@ public class Respuesta implements Serializable {
 
     private String text;
 
-    @Transient
+    //@Transient
     private Alumno alumno;
 
     private Long alumnoId;
 
-    @Transient
+    //@Transient
     private Pregunta pregunta;
 
     private Long preguntaId;

@@ -23,7 +23,8 @@ public class RespuestaServiceImpl implements RespuestaService{
 
     @Override
     public List<Respuesta> findByAlumnoIdAndExamenId(Long alumnoId, Long examenId) {
-        Examen examen = examenesFeignClient.findExamenById(examenId);
+        /*E
+        xamen examen = examenesFeignClient.findExamenById(examenId);
         List<Pregunta> preguntas = examen.getPreguntas();
         List<Long> preguntasId = preguntas.stream().map(Pregunta::getId).toList();
         List<Respuesta> respuestas = respuestaRepository.findByAlumnoIdAndPreguntasId(alumnoId, preguntasId);
@@ -32,7 +33,8 @@ public class RespuestaServiceImpl implements RespuestaService{
                 if (pregunta.getId() == respuesta.getPreguntaId()) respuesta.setPregunta(pregunta);
             }); return respuesta;
         }).toList();
-        return respuestas;
+        */
+        return respuestaRepository.findByAlumnoIdAndExamenId(alumnoId, examenId);
     }
 
     @Override
@@ -42,12 +44,15 @@ public class RespuestaServiceImpl implements RespuestaService{
 
     @Override
     public List<Long> findIdExamenConRespuestaByAlumnoId(Long alumnoId) {
+        /*
         List<Respuesta> respuestas = respuestaRepository.findByAlumnoId(alumnoId);
         List<Long> examenesId = Collections.emptyList();
         if (respuestas.size() > 0) {
             List<Long> preguntasId = respuestas.stream().map(Respuesta::getPreguntaId).toList();
             examenesId = examenesFeignClient.getExamenesRespondidos(preguntasId);
         }
-        return examenesId;
+        */
+        List<Respuesta> respuestas = respuestaRepository.findIdExamenConRespuestaByAlumnoId(alumnoId);
+        return respuestas.stream().map(respuesta -> respuesta.getPregunta().getExamen().getId()).distinct().toList();
     }
 }
