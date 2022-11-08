@@ -8,10 +8,17 @@ import org.springframework.web.bind.annotation.*;
 import vicente.marti.microserviciocommons.controller.CommonController;
 import vicente.marti.microserviciocommons.entity.Examen;
 import vicente.marti.microservicioexamenes.service.ExamenService;
+
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 public class ExamenController extends CommonController<Examen, ExamenService> {
+
+    @GetMapping("/examenes-respondidos")
+    public ResponseEntity<?> getExamenesRespondidos(@RequestParam List<Long> preguntasId) {
+        return ResponseEntity.ok(service.findIdExamenConRespuestaByPreguntasId(preguntasId));
+    }
 
     //Elimina del List de la base de datos cualquier pregunta que no esté en el nuevo List y lo persiste
     @PutMapping("/{id}")

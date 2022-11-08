@@ -12,6 +12,5 @@ public interface CommonService<T> {
     Page<T> findAll(Pageable pageable);
     Optional<T> findById(Long id);
     T save(T type);
-    List<T> saveAll(List<T> types);
     void deleteById(Long id);
 }

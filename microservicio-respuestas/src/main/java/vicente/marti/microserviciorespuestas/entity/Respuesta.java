@@ -1,42 +1,39 @@
 package vicente.marti.microserviciorespuestas.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.mongodb.core.mapping.Document;
 import vicente.marti.microserviciocommons.entity.Alumno;
 import vicente.marti.microserviciocommons.entity.Pregunta;
 
-import javax.persistence.*;
-import java.io.Serial;
 import java.io.Serializable;
 
-@Entity
-@Table(name = "respuestas")
+@Document(collection = "respuestas")
 public class Respuesta implements Serializable {
 
-    @Serial
+
     private static final long serialVersionUID = -9132867786098502772L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
 
     private String text;
 
-    //@ManyToOne(fetch = FetchType.LAZY)
     @Transient
     private Alumno alumno;
 
-    @Column(name = "alumno_id")
     private Long alumnoId;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @OneToOne(fetch = FetchType.LAZY)
+    @Transient
     private Pregunta pregunta;
 
-    public Long getId() {
+    private Long preguntaId;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -70,5 +67,13 @@ public class Respuesta implements Serializable {
 
     public void setPregunta(Pregunta pregunta) {
         this.pregunta = pregunta;
+    }
+
+    public Long getPreguntaId() {
+        return preguntaId;
+    }
+
+    public void setPreguntaId(Long preguntaId) {
+        this.preguntaId = preguntaId;
     }
 }
