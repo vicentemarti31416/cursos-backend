@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
+//@CrossOrigin({"http://localhost:4200"}) Está configurado en el microservicio-gateway
 public class CommonController<T, S extends CommonService<T>> {
 
     @Autowired
