@@ -3,6 +3,8 @@ package vicente.marti.microserviciocommons.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
 import java.io.Serializable;
 import java.util.Arrays;
@@ -19,10 +21,14 @@ public class Alumno implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotNull(message = " no puede estar vacío")
     private String nombre;
 
+    @NotNull(message = " no puede estar vacío")
     private String apellido;
 
+    @NotNull(message = " no puede estar vacío")
+    @Email(message = " debe ser una dirección de email válida")
     @Column(unique = true)
     private String email;
 
