@@ -47,13 +47,13 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
     }
 
     @PostMapping("/save-with-photo")
-    public ResponseEntity<?> saveWithPhoto(@Validated Alumno alumno, BindingResult result, @RequestParam MultipartFile file) throws IOException {
-        if (!file.isEmpty()) alumno.setPhoto(file.getBytes());
+    public ResponseEntity<?> saveWithPhoto(@Validated Alumno alumno, BindingResult result, @RequestParam MultipartFile archivo) throws IOException {
+        if (!archivo.isEmpty()) alumno.setPhoto(archivo.getBytes());
         return super.save(alumno, result);
     }
 
     @PutMapping("/update-with-photo/{id}")
-    public ResponseEntity<?> updateWithPhoto(@Validated Alumno alumno, BindingResult result, @PathVariable Long id, @RequestParam MultipartFile file) throws IOException {
+    public ResponseEntity<?> updateWithPhoto(@Validated Alumno alumno, BindingResult result, @PathVariable Long id, @RequestParam MultipartFile archivo) throws IOException {
         if (result.hasErrors()) return this.validate(result);
         Optional<Alumno> optional = service.findById(id);
         if (optional.isEmpty()) return ResponseEntity.notFound().build();
@@ -61,7 +61,7 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
         alumnoDb.setNombre(alumno.getNombre());
         alumnoDb.setApellido(alumno.getApellido());
         alumnoDb.setEmail(alumno.getEmail());
-        if (!file.isEmpty()) alumnoDb.setPhoto(file.getBytes());
+        if (!archivo.isEmpty()) alumnoDb.setPhoto(archivo.getBytes());
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(alumnoDb));
     }
 
