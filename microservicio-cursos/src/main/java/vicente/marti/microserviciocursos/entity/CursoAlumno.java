@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "cursos_alumnos")
-public class CursoAlumno implements Serializable {
+public class CursoAlumno  {
 
     @Serial
     private static final long serialVersionUID = 8719973084474087495L;

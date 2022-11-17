@@ -4,11 +4,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serial;
-import java.io.Serializable;
 
 @Entity
 @Table(name = "preguntas")
-public class Pregunta implements Serializable {
+public class Pregunta{
 
     @Serial
     private static final long serialVersionUID = 592563739037296213L;
@@ -19,7 +18,7 @@ public class Pregunta implements Serializable {
 
     private String text;
 
-    @JsonIgnoreProperties(value = {"preguntas", "hibernateLazyInitializer", "handler"})
+    @JsonIgnoreProperties(value = {"preguntas"})
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "examen_id")
     private Examen examen;

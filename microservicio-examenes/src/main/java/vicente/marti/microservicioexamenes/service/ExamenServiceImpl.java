@@ -18,12 +18,13 @@ public class ExamenServiceImpl extends CommonServiceImpl<Examen, ExamenRepositor
     @Autowired
     private AsignaturaRepository asignaturaRepository;
 
-
+    @Override
     @Transactional(readOnly = true)
     public List<Examen> findExamenByName(String str) {
         return repository.findExamenByName(str);
     }
 
+    @Transactional(readOnly = true)
     @Override
     public List<Asignatura> findAllAsignaturas() {
         return asignaturaRepository.findAll();

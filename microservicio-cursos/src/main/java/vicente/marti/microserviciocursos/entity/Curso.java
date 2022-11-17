@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "cursos")
-public class Curso implements Serializable {
+public class Curso  {
     @Serial
     private static final long serialVersionUID = -4225764717739444650L;
 

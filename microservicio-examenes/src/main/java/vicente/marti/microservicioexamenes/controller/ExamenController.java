@@ -7,6 +7,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import vicente.marti.microserviciocommons.controller.CommonController;
 import vicente.marti.microserviciocommons.entity.Examen;
+import vicente.marti.microserviciocommons.entity.Pregunta;
 import vicente.marti.microservicioexamenes.service.ExamenService;
 
 import java.util.List;
@@ -28,11 +29,14 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
         if (optional.isEmpty()) return ResponseEntity.notFound().build();
         Examen examenDb = optional.get();
         examenDb.setName(examen.getName());
-        examenDb.getPreguntas()
+        List<Pregunta> preguntasEliminadas = examenDb.getPreguntas()
                 .stream()
                 .filter(pdb -> !examen.getPreguntas().contains(pdb))
-                .forEach(examenDb::remove);
+                .toList();
+        preguntasEliminadas.forEach(examenDb::remove);
         examenDb.setPreguntas(examen.getPreguntas());
+        examenDb.setAsignaturaPadre(examen.getAsignaturaPadre());
+        examenDb.setAsignaturaHija(examen.getAsignaturaHija());
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(examenDb));
     }
 
@@ -45,4 +49,5 @@ public class ExamenController extends CommonController<Examen, ExamenService> {
     public ResponseEntity<?> findAllAsignaturas() {
         return ResponseEntity.ok(service.findAllAsignaturas());
     }
+
 }

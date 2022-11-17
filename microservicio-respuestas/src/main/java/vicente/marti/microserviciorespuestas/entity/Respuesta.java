@@ -9,7 +9,7 @@ import vicente.marti.microserviciocommons.entity.Pregunta;
 import java.io.Serializable;
 
 @Document(collection = "respuestas")
-public class Respuesta implements Serializable {
+public class Respuesta {
 
 
     private static final long serialVersionUID = -9132867786098502772L;

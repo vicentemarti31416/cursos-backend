@@ -3,15 +3,15 @@ package vicente.marti.microserviciocommons.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serial;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "examenes")
-public class Examen implements Serializable {
+public class Examen {
 
     @Serial
     private static final long serialVersionUID = 7985130518900732114L;
@@ -29,9 +29,31 @@ public class Examen implements Serializable {
     @OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Pregunta> preguntas;
 
-    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Asignatura asignatura;
+    @NotNull(message = " no puede estar vacío")
+    @JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Asignatura asignaturaPadre;
+
+    @JsonIgnoreProperties(value= {"handler", "hibernateLazyInitializer"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @NotNull(message = " no puede estar vacío")
+    private Asignatura asignaturaHija;
+
+    public Asignatura getAsignaturaPadre() {
+        return asignaturaPadre;
+    }
+
+    public void setAsignaturaPadre(Asignatura asignaturaPadre) {
+        this.asignaturaPadre = asignaturaPadre;
+    }
+
+    public Asignatura getAsignaturaHija() {
+        return asignaturaHija;
+    }
+
+    public void setAsignaturaHija(Asignatura asignaturaHija) {
+        this.asignaturaHija = asignaturaHija;
+    }
 
     @Transient
     private boolean isAnswered;
@@ -97,14 +119,6 @@ public class Examen implements Serializable {
 
     public void setCreated(Date created) {
         this.created = created;
-    }
-
-    public Asignatura getAsignatura() {
-        return asignatura;
-    }
-
-    public void setAsignatura(Asignatura asignatura) {
-        this.asignatura = asignatura;
     }
 
     public boolean isAnswered() {
