@@ -11,9 +11,13 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import vicente.marti.microserviciocommons.controller.CommonController;
 import vicente.marti.microserviciocommons.entity.Alumno;
+import vicente.marti.microserviciocursos.entity.Curso;
+import vicente.marti.microserviciocursos.entity.CursoAlumno;
 import vicente.marti.microserviciousuarios.service.AlumnoService;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +47,19 @@ public class AlumnoController extends CommonController<Alumno, AlumnoService> {
 
     @GetMapping("/buscar/{str}")
     public ResponseEntity<?> findByNombreOrApellido(@PathVariable String str) {
-        return  ResponseEntity.ok(service.findByNombreOrApellido(str));
+        List<Curso> cursos = service.findAllCursos();
+        List<List<CursoAlumno>> cursoAlumnos = new ArrayList<>();
+        cursos.forEach(curso -> cursoAlumnos.add(curso.getCursoAlumnos()));
+        //List<Long> alumnosId = new ArrayList<>();
+        //cursoAlumnos.stream().flatMap(Collection::stream).forEach(cursoAlumno -> alumnosId.add(cursoAlumno.getAlumnoId()));
+        List<Long> alumnosId = cursoAlumnos.stream()
+                .flatMap(Collection::stream)
+                .map(CursoAlumno::getAlumnoId)
+                .toList();
+        List<Alumno> alumnos = service.findByNombreOrApellido(str);
+        List<Alumno> alumnosFiltrados = alumnos.stream().filter(alumno -> !alumnosId.contains(alumno.getId())).toList();
+        System.out.println(alumnosFiltrados);
+        return  ResponseEntity.ok(alumnosFiltrados);
     }
 
     @PostMapping("/save-with-photo")

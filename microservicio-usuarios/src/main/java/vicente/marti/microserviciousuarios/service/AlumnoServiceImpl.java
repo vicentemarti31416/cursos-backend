@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import vicente.marti.microserviciocommons.service.CommonServiceImpl;
 import vicente.marti.microserviciocommons.entity.Alumno;
+import vicente.marti.microserviciocursos.entity.Curso;
 import vicente.marti.microserviciousuarios.feign.CursoFeignClient;
 import vicente.marti.microserviciousuarios.repository.AlumnoRepository;
 
@@ -28,9 +29,14 @@ public class AlumnoServiceImpl extends CommonServiceImpl<Alumno, AlumnoRepositor
         cursoFeignClient.deleteCursoAlumnoByAlumnoId(alumnoId);
     }
 
+    @Override
+    public List<Curso> findAllCursos() {
+        return cursoFeignClient.findAll();
+    }
+
     @Transactional(readOnly = true)
     public List<Alumno> findByNombreOrApellido(String str) {
-        return repository.findByNombreOrApellido(str);
+        return repository.findByNombreOrApellidoStartingWith(str, str);
     }
 
     @Override

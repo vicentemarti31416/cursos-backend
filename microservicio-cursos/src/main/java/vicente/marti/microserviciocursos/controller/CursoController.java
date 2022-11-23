@@ -71,16 +71,30 @@ public class CursoController extends CommonController<Curso, CursoService> {
 
     @PutMapping("/{idCurso}/add-alumnos")
     public ResponseEntity<?> addAlumnos(@Validated @RequestBody List<Alumno> alumnos, BindingResult result, @PathVariable Long idCurso) {
+        List <Alumno> alumnosDistinct = alumnos.stream().distinct().toList();
         if (result.hasErrors()) return this.validate(result);
         Optional<Curso> optional = service.findById(idCurso);
         if (optional.isEmpty()) return ResponseEntity.notFound().build();
         Curso cursoDb = optional.get();
-        alumnos.forEach(alumno -> {
+        alumnosDistinct.forEach(alumno -> {
             CursoAlumno cursoAlumno = new CursoAlumno();
             cursoAlumno.setAlumnoId(alumno.getId());
             cursoAlumno.setCurso(cursoDb);
             cursoDb.addCursoAlumno(cursoAlumno);
         });
+        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDb));
+    }
+
+    @PutMapping("/{idCurso}/add-alumno")
+    public ResponseEntity<?> addAlumno(@Validated @RequestBody Alumno alumno, BindingResult result, @PathVariable Long idCurso) {
+        if (result.hasErrors()) return ResponseEntity.notFound().build();
+        Optional<Curso> optional = service.findById(idCurso);
+        if (optional.isEmpty()) return ResponseEntity.notFound().build();
+        Curso cursoDb = optional.get();
+        CursoAlumno cursoAlumno = new CursoAlumno();
+        cursoAlumno.setAlumnoId(alumno.getId());
+        cursoAlumno.setCurso(cursoDb);
+        cursoDb.addCursoAlumno(cursoAlumno);
         return ResponseEntity.status(HttpStatus.CREATED).body(service.save(cursoDb));
     }
 
